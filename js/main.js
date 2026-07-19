@@ -31,7 +31,11 @@ if (savedAvatar) {
   avatarPreview.style.display = 'block';
 }
 
-const socket = io('http://localhost:5000', {
+const BACKEND_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:5000'
+  : 'https://sunne-roulette-backend.onrender.com';
+
+const socket = io(BACKEND_URL, {
   transports: ['websocket']
 });
 
