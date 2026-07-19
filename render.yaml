@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: sunne-roulette-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: npm start
