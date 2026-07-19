@@ -305,7 +305,11 @@ body.dark .theme svg {
 
 body.dark .chatp {
     background-color: rgba(17, 17, 17, 0.6);
-    color: white;
+    color: white !important;
+}
+
+body.dark .chatp::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .micro {
