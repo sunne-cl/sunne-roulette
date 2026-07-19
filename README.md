@@ -6,7 +6,7 @@ A real-time anonymous roulette chat application.
 Hosted on GitHub Pages.
 
 ## Backend
-Hosted on Render.
+Hosted on Render (Live at https://sunne-roullete-backend.onrender.com).
 
 ### Deploy Backend to Render
 Click the button below to deploy the backend server to Render for free:
