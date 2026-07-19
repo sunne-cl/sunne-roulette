@@ -35,7 +35,11 @@ io.on('connection', (socket) => {
 			return;
 		}
 
-		socket.data.username = data?.username || 'гей';
+		let username = data?.username || 'гей';
+		if (username.length > 16) {
+			username = username.substring(0, 16);
+		}
+		socket.data.username = username;
 		socket.data.avatar = data?.avatar || '../img/default.png';
 
     if (!(searchQueue.some(user => user.id === socket.id))) {

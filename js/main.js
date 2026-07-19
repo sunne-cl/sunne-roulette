@@ -43,6 +43,54 @@ function goto(url) {
   window.location.href = url;
 }
 
+function getCleanUsername() {
+  let name = usernameInput.value.trim();
+  if (name.length > 16) {
+    name = name.substring(0, 16);
+  }
+  return name || 'гей';
+}
+
+const chatArea = document.querySelector('.chat');
+let scrollBtn;
+
+function isUserAtBottom() {
+  if (!chatArea) return true;
+  return chatArea.scrollHeight - chatArea.scrollTop - chatArea.clientHeight < 150;
+}
+
+function scrollToBottom() {
+  if (!chatArea) return;
+  chatArea.scrollTo({
+    top: chatArea.scrollHeight,
+    behavior: 'smooth'
+  });
+}
+
+function initScrollBtn() {
+  if (!document.querySelector('.scroll-btn')) {
+    scrollBtn = document.createElement('button');
+    scrollBtn.className = 'scroll-btn';
+    scrollBtn.innerHTML = '⬇ Новые сообщения';
+    scrollBtn.addEventListener('click', () => {
+      scrollToBottom();
+      scrollBtn.classList.remove('show');
+    });
+    document.querySelector('#chat-screen .main').appendChild(scrollBtn);
+    
+    if (chatArea) {
+      chatArea.addEventListener('scroll', () => {
+        if (isUserAtBottom()) {
+          scrollBtn.classList.remove('show');
+        }
+      });
+    }
+  }
+}
+
+// Initialize scroll button when script loads
+initScrollBtn();
+
 function appendMessage(text, type) {
   chatInput.disabled = false;
 
@@ -59,7 +107,6 @@ function appendMessage(text, type) {
   const rowEl = document.createElement('div');
   rowEl.classList.add('message-row');
 
-  
   const avatarEl = document.createElement('img');
   avatarEl.classList.add('msg-avatar');
   
@@ -85,8 +132,17 @@ function appendMessage(text, type) {
 
   containerEl.append(authorEl, messageEl);
 
+  const wasAtBottom = isUserAtBottom();
+
   chatContainer.append(rowEl);
-  chatContainer.scrollTop = chatContainer.scrollHeight;
+
+  if (type === 'my' || wasAtBottom) {
+    scrollToBottom();
+  } else {
+    if (scrollBtn) {
+      scrollBtn.classList.add('show');
+    }
+  }
 }
 
 function sendMessage() {
@@ -109,7 +165,7 @@ startBtn.addEventListener('click', () => {
   startBtn.disabled = true;
   statusEl.innerText = 'Поиск собеседника...';
 
-  const name = usernameInput.value.trim() || 'гей';
+  const name = getCleanUsername();
   socket.emit('startSearch', { username: name, avatar: localStorage.getItem('avatar') || '../img/default.png' });
   localStorage.setItem('username', name);
 });
@@ -120,7 +176,7 @@ restartBtn.addEventListener('click', () => {
  statusEl.innerText = 'Поиск собеседника...';
  chatInput.disabled = true;
  chatInput.value = '';
- const name = usernameInput.value.trim() || 'гей';
+ const name = getCleanUsername();
  socket.emit('startSearch', { username: name, avatar: localStorage.getItem('avatar') || '../img/default.png' });
 });
 
@@ -134,7 +190,7 @@ stopBtn.addEventListener('click', () => {
 });
 
 saveNameBtn.addEventListener('click', () => {
-  const name = usernameInput.value.trim() || 'гей';
+  const name = getCleanUsername();
   localStorage.setItem('username', name);
 });
 
