@@ -1,14 +1,94 @@
-# Sunne Roulette
+# ?? Sunne Roulette
 
-A real-time anonymous roulette chat application.
+<p align="center">
+  <img src="assets/logo/logo.png" alt="Sunne Logo" width="120" />
+</p>
 
-## Frontend
-Hosted on GitHub Pages.
+<p align="center">
+  <strong>Современный и стильный анонимный чат-рулетка для быстрого общения.</strong>
+</p>
 
-## Backend
-Hosted on Render (Live at https://sunne-roullete-backend.onrender.com).
+<p align="center">
+  <a href="https://sunne-cl.github.io/sunne-roulette/"><img src="https://img.shields.io/badge/Frontend-GitHub_Pages-blue?style=flat-square&logo=github" alt="Frontend Status" /></a>
+  <a href="https://sunne-roullete-backend.onrender.com/"><img src="https://img.shields.io/badge/Backend-Render-green?style=flat-square&logo=render" alt="Backend Status" /></a>
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="License" />
+</p>
 
-### Deploy Backend to Render
-Click the button below to deploy the backend server to Render for free:
+---
+
+## ?? Особенности проекта
+
+*   **? Мгновенный поиск:** Быстрый подбор собеседников в реальном времени на основе очереди сокетов.
+*   **?? Анонимность:** Общайтесь без обязательной сложной регистрации. Задайте имя, загрузите аватарку (хранится локально) и сразу переходите к чату!
+*   **?? Премиальный дизайн:** Современный футуристичный интерфейс с поддержкой **темной и светлой темы**, плавным скроллом и уникальным шейдерным фильтром пикселизации.
+*   **?? Полноценный чат:** 
+    *   Индикатор набора текста («Собеседник печатает...»).
+    *   Автоматическая очистка чата при перезапуске.
+    *   Оповещения о подключении и отключении участников.
+    *   Поддержка отправки сообщений по клавише Enter.
+*   **?? Адаптивная верстка:** Удобный интерфейс как для ПК, так и для мобильных устройств.
+
+---
+
+## ??? Стек технологий
+
+*   **Frontend:** HTML5, CSS3 (Vanilla CSS), Modern JavaScript (ES6+), Socket.IO Client.
+*   **Backend:** Node.js, Express, Socket.IO Server, TypeScript.
+*   **Деплой:** GitHub Pages (Frontend), Render (Backend).
+
+---
+
+## ?? Развертывание и запуск бэкенда
+
+### 1-Click Деплой на Render
+Чтобы развернуть ваш собственный сервер бэкенда 24/7 бесплатно, просто нажмите кнопку ниже:
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/sunne-cl/sunne-roulette)
+
+---
+
+## ?? Локальный запуск (Разработка)
+
+### Бэкенд (Backend)
+1. Перейдите в директорию ackend:
+   `ash
+   cd backend
+   `
+2. Установите зависимости:
+   `ash
+   npm install
+   `
+3. Запустите сервер в режиме разработки:
+   `ash
+   npm run dev
+   `
+   *Сервер будет запущен на [http://localhost:5000](http://localhost:5000).*
+
+### Фронтенд (Frontend)
+1. Откройте файл index.html в корне проекта в любом браузере или используйте расширение вроде Live Server (VS Code).
+2. При запуске на localhost или 127.0.0.1 фронтенд автоматически подключится к локальному бэкенду на порту 5000.
+
+---
+
+## ?? Структура проекта
+
+`	ext
++-- assets/             # Логотипы, звуковые эффекты и шрифты
++-- css/                # Кастомные стили оформления
++-- img/                # Аватары по умолчанию и изображения
++-- js/                 # Скрипты фронтенда (логика чата, свичи тем)
++-- roullete/           # Страница самой чат-рулетки
++-- ts/                 # TypeScript исходники фронтенда
++-- backend/            # Исходный код сервера (Node.js + TS + Socket.IO)
+¦   +-- src/            # Основной код сервера
+¦   +-- tsconfig.json   # Конфигурация TypeScript
+¦   L-- package.json    # Зависимости и скрипты
++-- render.yaml         # Конфигурация автоматического деплоя для Render Blueprint
+L-- README.md           # Документация проекта
+`
+
+---
+
+## ?? Лицензия
+
+Этот проект распространяется под лицензией MIT. Подробности см. в файле [LICENSE](LICENSE).
