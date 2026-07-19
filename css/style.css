@@ -767,22 +767,29 @@ body.dark .online span p {
     bottom: 110px;
     left: 50%;
     transform: translateX(-50%) translateY(20px);
-    background-color: rgba(225, 205, 255, 0.9);
-    color: black;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 8px 16px;
-    border-radius: 20px;
+    background-color: #2f0044;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 12px;
     font-family: 'Sans', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     cursor: pointer;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 100;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
     opacity: 0;
     pointer-events: none;
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    gap: 4px;
+}
+
+.scroll-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
 }
 
 .scroll-btn.show {
@@ -792,7 +799,6 @@ body.dark .online span p {
 }
 
 body.dark .scroll-btn {
-    background-color: rgba(47, 0, 68, 0.9);
-    color: white;
-    border-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(225, 205, 255, 1);
+    color: black;
 }

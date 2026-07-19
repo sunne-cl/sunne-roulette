@@ -54,6 +54,8 @@ function getCleanUsername() {
 const chatArea = document.querySelector('.chat');
 let scrollBtn;
 
+let isAutoScrolling = false;
+
 function isUserAtBottom() {
   if (!chatArea) return true;
   return chatArea.scrollHeight - chatArea.scrollTop - chatArea.clientHeight < 150;
@@ -61,17 +63,21 @@ function isUserAtBottom() {
 
 function scrollToBottom() {
   if (!chatArea) return;
+  isAutoScrolling = true;
   chatArea.scrollTo({
     top: chatArea.scrollHeight,
     behavior: 'smooth'
   });
+  setTimeout(() => {
+    isAutoScrolling = false;
+  }, 400);
 }
 
 function initScrollBtn() {
   if (!document.querySelector('.scroll-btn')) {
     scrollBtn = document.createElement('button');
     scrollBtn.className = 'scroll-btn';
-    scrollBtn.innerHTML = '⬇ Новые сообщения';
+    scrollBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M480-360 280-560h400L480-360Z"/></svg> Новые сообщения';
     scrollBtn.addEventListener('click', () => {
       scrollToBottom();
       scrollBtn.classList.remove('show');
@@ -80,6 +86,7 @@ function initScrollBtn() {
     
     if (chatArea) {
       chatArea.addEventListener('scroll', () => {
+        if (isAutoScrolling) return;
         if (isUserAtBottom()) {
           scrollBtn.classList.remove('show');
         }
