@@ -11,4 +11,4 @@ Hosted on Render.
 ### Deploy Backend to Render
 Click the button below to deploy the backend server to Render for free:
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/ClausMaslov/sunne-roulette)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/sunne-cl/sunne-roullete)
